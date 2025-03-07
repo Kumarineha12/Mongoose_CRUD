@@ -4,6 +4,8 @@ import { EnquiryList } from './enquiry/EnquiryList';
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify'
+const url='https://mern-crud-project-hrp6.onrender.com'
+
 
 const Enquiry = () => {
   const [enquiryList, setEnquiryList] = useState([]);
@@ -20,7 +22,7 @@ const Enquiry = () => {
     e.preventDefault()
     //if id present update else insert
     if(formData._id){
-      axios.put(`http://localhost:4000/web/api/enquiry/enquiry-update/${formData._id}`,formData)
+      axios.put(`${url}/web/api/enquiry/enquiry-update/${formData._id}`,formData)
       .then((res)=>{
         toast.success("Data updated successfully")
         setFormData({
@@ -34,7 +36,7 @@ const Enquiry = () => {
       })
     }
       else{
-        axios.post(`http://localhost:4000/web/api/enquiry/enquiry-insert`, formData)
+        axios.post(`${url}/web/api/enquiry/enquiry-insert`, formData)
         .then((res) => {
           toast.success("Data saved successfully")
           setFormData({
@@ -50,7 +52,7 @@ const Enquiry = () => {
   }
 
   const getAlldata = () => {
-    axios.get(`http://localhost:4000/web/api/enquiry/enquiry-list`)
+    axios.get(`${url}/web/api/enquiry/enquiry-list`)
       .then((res) => res.data)
       .then((finalData) => {
         if (finalData.status) {
