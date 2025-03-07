@@ -2,6 +2,8 @@ import React from 'react'
 import { Table } from "flowbite-react";
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
+const url='https://mern-crud-project-hrp6.onrender.com'
+
 //now do destructure of data which ha spassed as a props from parent
 
 export function EnquiryList({ data, getAlldata, Swal, setFormData }) {
@@ -13,7 +15,9 @@ export function EnquiryList({ data, getAlldata, Swal, setFormData }) {
       confirmButtonText: "Save",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:4000/web/api/enquiry/enquiry-delete/${delId}`)
+        // axios.delete(`http://localhost:4000/web/api/enquiry/enquiry-delete/${delId}`)
+         axios.delete(`${url}/web/api/enquiry/enquiry-delete/${delId}`)
+
         .then((res) => {
           toast.success('data deleted successfully')
           getAlldata()//by using this after delete , that row wll be deleted from UI also even without refreshing
@@ -26,7 +30,7 @@ export function EnquiryList({ data, getAlldata, Swal, setFormData }) {
    
   }
   let editRow = (editId) => {
-    axios.get(`http://localhost:4000/web/api/enquiry/single/${editId}`)
+    axios.get(`${url}/web/api/enquiry/single/${editId}`)
     .then((res)=>{
       let data=res.data;
       console.log(data.enquiry);
