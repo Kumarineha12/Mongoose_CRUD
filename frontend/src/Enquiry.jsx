@@ -99,8 +99,8 @@ const Enquiry = () => {
             </div>
             
             <Button type='submit' className='w-full'>Save</Button>
-             {formData._id?'Update':'Save'}
-             {/* if id is there show Update otherwise show Save */}
+{/*              {formData._id?'Update':'Save'}
+             {/* if id is there show Update otherwise show Save */} */}
           </form>
         </div>
 
